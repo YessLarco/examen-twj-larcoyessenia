@@ -1,0 +1,38 @@
+
+<div class="container">
+  <div class="row">
+    <nav class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand">Programar una borrachera</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuarios <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/crearUsuario">Crear Usuario</a></li>
+                <li><a href="/usuarios">Listar Usuarios</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Borrachera <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/crearBorrachera">Crear Borrachera</a></li>
+                <li><a href="/borracheras">Listar Borracheras</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+  </div>
+
+  <div class="row">  <%- body %>    </div>
+  <div class="row">
+  </div>
+  <h4>Realizado por: Yessenia Larco A.</h4>
+</div>
+
+  <router-outlet></router-outlet>
