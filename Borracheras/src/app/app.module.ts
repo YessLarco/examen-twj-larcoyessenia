@@ -7,15 +7,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { BorracheraComponent } from './borrachera/borrachera.component';
-import { ServicesComponent } from './services/services.component';
+import {MasterUrlService} from "./services/master-url.service";
+import {routing} from "./app.routes";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     UsuarioComponent,
-    BorracheraComponent,
-    ServicesComponent
+    BorracheraComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +23,7 @@ import { ServicesComponent } from './services/services.component';
     HttpModule,
     routing
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [MasterUrlService],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
