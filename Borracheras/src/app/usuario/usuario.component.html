@@ -21,7 +21,7 @@
         <input type="date" class="form-control" placeholder="Ingrese la fecha de nacimiento"  name="fechaNacimiento" [(ngModel)]="nuevoUsuario.fechaNacimiento">
       </div>
       <button type="submit" class="btn btn-success">Crear Usuario</button>
-      <button type="submit" class="btn btn-danger" (click)="mostrarCrear=!mostrarCrear">Cancelar</button>
+      <button type="submit" class="btn btn-danger">Cancelar</button>
     </form>
   </div>
 </div>
@@ -54,9 +54,9 @@
             <td>{{usuario.nombreUsuario}}</td>
             <td>{{usuario.ciudadResidencia}}</td>
             <td>{{usuario.fechaNacimiento}}</td>
-            <td><a  data-toggle="tooltip" title="Editar Usuario"><button id="boton" type="button" class="btn btn-default btn-xs" (click)="mostrarEditar=!mostrarEditar;title='Editar Usuario'"><span class="glyphicon glyphicon-pencil"></span></button></a></td>
+            <td><a  data-toggle="tooltip" title="Editar Usuario"><button id="boton" type="button" class="btn btn-default btn-xs" (click)="mostrarEditar=!mostrarEditar;title='Editar Usuario';usuarioEditar=usuario.idUsuario"><span class="glyphicon glyphicon-pencil"></span></button></a></td>
             <td><a (click)="borrarUsuario(usuario.idUsuario)" data-toggle="tooltip" title="Eliminar Usuario"><button id="boton" type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-remove"></span></button></a></td>
-            <td><a data-toggle="tooltip" title="Mostrar Borracheras del usuario"><button id="boton" type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-share-alt"></span></button></a></td>
+            <td><a [routerLink]="[usuario.idUsuario,'borrachera']"data-toggle="tooltip" title="Mostrar Borracheras del usuario"><button id="boton" type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-share-alt"></span></button></a></td>
           </tr>
           </tbody>
         </table>
@@ -65,25 +65,28 @@
   </div>
 </div>
 
-<div class="container" [hidden]="mostrarEditar">
-  <div class="row" >
-    <form (ngSubmit)="editarUsuario(UsuarioEditarForm)" #UsuarioEditarForm="ngForm">
+<div class="container" *ngFor="let usuario2 of usuarios">
+  <div class="row" *ngIf="(usuario2.idUsuario==usuarioEditar)&&!mostrarEditar" >
+    <form (ngSubmit)="editarUsuario(usuario2)" #UsuarioEditarForm="ngForm">
       <h1>{{title}}</h1>
-      <div class="form-group">
-        <input type="hidden" name="idUsuario" value={{usuario.idUsuario}}>
+      <div class="form-group" >
+        <input type="hidden" name="idUsuario" value={{usuario2.idUsuario}}>
         <label>Nombre Usuario: </label>
         <input type="text" class="form-control" placeholder="Ingrese el nombre del usuario" name="nombreUsuario"
-               value="{{usuario.nombreUsuario}}">
+               [(ngModel)]="usuario2.nombreUsuario"
+               #nombreUsuario="ngModel">
       </div>
       <div class="form-group">
         <label>Ciudad de Residencia: </label>
         <input type="text" class="form-control" placeholder="Ingrese la ciudad de residencia del usuario"  name="ciudadResidencia"
-               value="<%= usuarioEditar.ciudadResidencia%>">
+               [(ngModel)]="usuario2.ciudadResidencia"
+               #ciudadResidencia="ngModel">
       </div>
       <div class="form-group">
         <label>Fecha de Nacimiento: </label>
         <input type="date" class="form-control" placeholder="Ingrese la fecha de nacimiento"  name="fechaNacimiento"
-               value="<%= usuarioEditar.fechaNacimiento%>">
+               [(ngModel)]="usuario2.fechaNacimiento"
+               #fechaNacimiento="ngModel">
       </div>
       <button type="submit" class="btn btn-success">Actualizar Usuario</button>
     </form>

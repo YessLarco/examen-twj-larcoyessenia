@@ -1,3 +1,83 @@
-<p>
-  borrachera works!
-</p>
+<div class="container">
+  <div class="row" [hidden]="!mostrarCrear">
+    <h1>{{title}}</h1>
+    <form (ngSubmit)="crearBorrachera(NuevaBorracheraForm)" #NuevaBorracheraForm="ngForm">
+      <div class="form-group">
+        <label>Motivo: </label>
+        <input type="text" class="form-control" placeholder="Ingrese el motivo de la borrachera" name="motivo"
+               [(ngModel)]="nuevaBorrachera.motivo"
+               #motivo="ngModel">
+      </div>
+      <div class="form-group">
+        <label>Latitud donde empezó: </label>
+        <input type="number" class="form-control" placeholder="Ingrese la latitud de su ubicación"  name="latitudDondeEmpezo"
+               [(ngModel)]="nuevaBorrachera.latitudDondeEmpezo"
+               #latitudDondeEmpezo="ngModel">
+      </div>
+      <div class="form-group">
+        <label>Longitud donde empezó: </label>
+        <input type="number" class="form-control" placeholder="Ingrese la longitud de su ubicación"  name="longitudDondeEmpezo"
+               [(ngModel)]="nuevaBorrachera.longitudDondeEmpezo"
+               #longitudDondeEmpezo="ngModel">
+      </div>
+      <button type="submit" class="btn btn-success">Crear Borrachera</button>
+    </form>
+  </div>
+  <div class="row" [hidden]="mostrarCrear" align="right">
+    <br>
+    <button id="boton" class="btn btn-lg" (click)="mostrarCrear=!mostrarCrear; title='Crear Borrachera'">Agregar Borracheras</button>
+  </div>
+  <div class="row" [hidden]="mostrarCrear">
+    <div class=" col-sm-12">
+      <div class="table-responsive" align="center">
+        <h1>Listar Borrachos</h1>
+        <table class="table table-striped" align="center">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Motivo</th>
+            <th>Latitud</th>
+            <th>Longitud</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr *ngFor="let borrachera of borracheras">
+            <td>{{borrachera.contador}}</td>
+            <td>{{borrachera.motivo}}</td>
+            <td align="center">{{borrachera.latitudDondeEmpezo}}</td>
+            <td align="center">{{borrachera.longitudDondeEmpezo}}</td>
+            <td><a  data-toggle="tooltip" title="Editar Borrachera"><button id="boton" type="button" class="btn btn-default btn-xs" (click)="mostrarEditar=!mostrarEditar;title='Editar Borrachera';editar=borrachera.idBorrachera"><span class="glyphicon glyphicon-pencil"></span></button></a></td>
+            <td><a (click)="borrarBorrachera(borrachera.idBorrachera)" data-toggle="tooltip" title="Eliminar Borrachera"><button id="boton" type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-remove"></span></button></a></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>
+<div class="container" *ngFor="let borra2 of borracheras">
+  <div class="row" *ngIf="(borra2.idBorrachera==editar)&&!mostrarEditar">
+    <h1>{{title}}</h1>
+    <form (ngSubmit)="editarBorrachera(borra2)" #BorracheraEditarForm="ngForm">
+      <div class="form-group">
+        <label>Motivo: </label>
+        <input type="text" class="form-control" placeholder="Ingrese el motivo de la borrachera" name="motivo"
+               [(ngModel)]="borra2.motivo"
+               #motivo="ngModel">
+      </div>
+      <div class="form-group">
+        <label>Latitud donde empezó: </label>
+        <input type="number" class="form-control" placeholder="Ingrese la latitud de su ubicación"  name="latitudDondeEmpezo"
+               [(ngModel)]="borra2.latitudDondeEmpezo"
+               #latitudDondeEmpezo="ngModel">
+      </div>
+      <div class="form-group">
+        <label>Longitud donde empezó: </label>
+        <input type="number" class="form-control" placeholder="Ingrese la longitud de su ubicación"  name="longitudDondeEmpezo"
+               [(ngModel)]="borra2.longitudDondeEmpezo"
+               #longitudDondeEmpezo="ngModel">
+      </div>
+      <button type="submit" class="btn btn-success">Actualizar Borrachera</button>
+    </form>
+  </div>
+</div>

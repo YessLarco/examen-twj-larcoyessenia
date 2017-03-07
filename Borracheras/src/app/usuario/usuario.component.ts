@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Http, Response} from "@angular/http";
 import {MasterUrlService} from "../services/master-url.service";
 import {NgForm} from "@angular/forms";
-import {forEach} from "@angular/router/src/utils/collection";
-import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-usuario',
@@ -14,14 +12,13 @@ export class UsuarioComponent implements OnInit {
   title: string = " ccc";
   nuevoUsuario: any = {};
   usuarios = [];
-  queForm="ListarUsuarios";
   mostrarCrear=false;
   mostrarEditar=false;
-  constructor(private _ActivatedRoute: ActivatedRoute,private _http: Http,
+  usuarioEditar=0;
+  constructor(private _http: Http,
               private _masterUrl: MasterUrlService) { }
 
   ngOnInit() {
-
     this._http.get(this._masterUrl.url + "Usuario")
       .subscribe(
         (res: Response) => {
@@ -79,11 +76,13 @@ export class UsuarioComponent implements OnInit {
       )
   }
 
-  editarUsuario(usuario:any){
+  editarUsuario(usuario2:any){
     let parametros = {
-      nombre:usuario.nombreUsuario
+      nombreUsuario: usuario2.nombreUsuario,
+      ciudadResidencia: usuario2.ciudadResidencia,
+      fechaNacimiento: usuario2.fechaNacimiento
     };
-    this._http.put(this._masterUrl.url+"Tienda/"+usuario.idUsuario,parametros)
+    this._http.put(this._masterUrl.url+"Usuario/"+usuario2.idUsuario,parametros)
       .subscribe(
         (res:Response)=>{
           //tienda.formularioCerrado = !tienda.formularioCerrado;
@@ -91,7 +90,11 @@ export class UsuarioComponent implements OnInit {
         },
         (err)=>{
           console.log("Error",err);
+        },
+        () => {
+          this.mostrarEditar = true;
         }
+
       )
   }
 }
