@@ -11,11 +11,12 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./usuario.component.css']
 })
 export class UsuarioComponent implements OnInit {
-  title: string = "Crear Usuario";
+  title: string = " ccc";
   nuevoUsuario: any = {};
   usuarios = [];
   queForm="ListarUsuarios";
   mostrarCrear=false;
+  mostrarEditar=false;
   constructor(private _ActivatedRoute: ActivatedRoute,private _http: Http,
               private _masterUrl: MasterUrlService) { }
 
@@ -59,8 +60,38 @@ export class UsuarioComponent implements OnInit {
         },
         () => {
           console.log("Termino la funcion vamos a la casa");
+          this.mostrarCrear = false;
         }
       );
 
+  }
+
+  borrarUsuario(idUsuario: number){
+    this._http.delete(this._masterUrl.url+"Usuario/"+idUsuario)
+      .subscribe(
+        (res)=>{
+          let usuarioBorrar = res.json();
+          this.usuarios=this.usuarios.filter(value=>usuarioBorrar.idUsuario!=value.idUsuario);
+        },
+        (err)=>{
+          console.log(err);
+        }
+      )
+  }
+
+  editarUsuario(usuario:any){
+    let parametros = {
+      nombre:usuario.nombreUsuario
+    };
+    this._http.put(this._masterUrl.url+"Tienda/"+usuario.idUsuario,parametros)
+      .subscribe(
+        (res:Response)=>{
+          //tienda.formularioCerrado = !tienda.formularioCerrado;
+          console.log("Respuesta:",res.json());
+        },
+        (err)=>{
+          console.log("Error",err);
+        }
+      )
   }
 }
