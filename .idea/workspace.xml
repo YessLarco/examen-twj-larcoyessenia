@@ -30,14 +30,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="usuario.component.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="usuario.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Borracheras/src/app/usuario/usuario.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
+            <state relative-caret-position="-375">
               <caret line="68" column="19" lean-forward="false" selection-start-line="68" selection-start-column="19" selection-end-line="68" selection-end-column="19" />
               <folding>
                 <element signature="n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#2;n#!!top" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="master-url.service.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Borracheras/src/app/services/master-url.service.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="236">
+              <caret line="8" column="57" lean-forward="false" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="57" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -107,7 +117,6 @@
         <option value="$PROJECT_DIR$/Borracheras/src/app/app.component.css" />
         <option value="$PROJECT_DIR$/Borracheras/src/app/app.component.ts" />
         <option value="$PROJECT_DIR$/Borracheras/src/app/services/master-url.service.spec.ts" />
-        <option value="$PROJECT_DIR$/Borracheras/src/app/services/master-url.service.ts" />
         <option value="$PROJECT_DIR$/Borracheras/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/Borracheras/src/app/borrachera/borrachera.component.css" />
         <option value="$PROJECT_DIR$/Borracheras/src/app/home/home.component.css" />
@@ -120,6 +129,7 @@
         <option value="$PROJECT_DIR$/Borracheras/src/app/usuario/usuario.component.css" />
         <option value="$PROJECT_DIR$/Borracheras/src/app/usuario/usuario.component.ts" />
         <option value="$PROJECT_DIR$/Borracheras/src/app/usuario/usuario.component.html" />
+        <option value="$PROJECT_DIR$/Borracheras/src/app/services/master-url.service.ts" />
       </list>
     </option>
   </component>
@@ -245,7 +255,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="usuario" />
+              <option name="myItemId" value="services" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -333,12 +343,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1488765712907</updated>
-      <workItem from="1488765718180" duration="35261000" />
+      <workItem from="1488765718180" duration="36277000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35261000" />
+    <option name="totallyTimeSpent" value="36277000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -482,14 +492,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Borracheras/src/app/services/master-url.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="16" column="3" lean-forward="false" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Borracheras/src/app/app.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="259">
@@ -540,11 +542,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Borracheras/src/app/usuario/usuario.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
+        <state relative-caret-position="-375">
           <caret line="68" column="19" lean-forward="false" selection-start-line="68" selection-start-column="19" selection-end-line="68" selection-end-column="19" />
           <folding>
             <element signature="n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#2;n#!!top" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Borracheras/src/app/services/master-url.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="8" column="57" lean-forward="false" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="57" />
+          <folding />
         </state>
       </provider>
     </entry>
