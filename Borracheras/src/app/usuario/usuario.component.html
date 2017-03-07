@@ -1,22 +1,65 @@
 
-<div class="container">
-  <h1>{{title}}</h1>
-  <form>
-    <div class="form-group">
-      <label>Nombre Usuario: </label>
-      <input type="text" class="form-control" placeholder="Ingrese el nombre del usuario" name="nombreUsuario">
-    </div>
+<div class="container" >
+  <div class="row" [hidden]="!mostrarCrear">
+    <h1>{{title}}</h1>
+    <form (ngSubmit)="crearUsuario(NuevoUsuarioForm)" #NuevoUsuarioForm="ngForm">
+      <div class="form-group">
+        <label>Nombre Usuario: </label>
+        <input required
+               type="text" class="form-control"
+               placeholder="Ingrese el nombre del usuario"
+               name="nombreUsuario"
+               [(ngModel)]="nuevoUsuario.nombreUsuario"
+               #nombreUsuario="ngModel">
+      </div>
+      <div class="form-group">
+        <label>Ciudad de Residencia: </label>
+        <input type="text" class="form-control" placeholder="Ingrese la ciudad de residencia del usuario"  name="ciudadResidencia" [(ngModel)]="nuevoUsuario.ciudadResidencia" #ciudadResidencia="ngModel">
+      </div>
+      <div class="form-group">
+        <label>Fecha de Nacimiento: </label>
+        <input type="date" class="form-control" placeholder="Ingrese la fecha de nacimiento"  name="fechaNacimiento" [(ngModel)]="nuevoUsuario.fechaNacimiento">
+      </div>
+      <button type="submit" class="btn btn-success">Crear Usuario</button>
+    </form>
+  </div>
+</div>
 
-    <div class="form-group">
-      <label>Ciudad de Residencia: </label>
-      <input type="text" class="form-control" placeholder="Ingrese la ciudad de residencia del usuario"  name="ciudadResidencia">
-    </div>
+<div class="container" align="right">
+  <div [hidden]="mostrarCrear">
+    <button id="boton" class="btn btn-lg" (click)="mostrarCrear=!mostrarCrear; title='Crear Usuario'" >Agregar Usuarios</button>
+  </div>
+</div>
 
-    <div class="form-group">
-      <label>Fecha de Nacimiento: </label>
-      <input type="date" class="form-control" placeholder="Ingrese la fecha de nacimiento"  name="fechaNacimiento">
+<div class="container" [hidden]="mostrarCrear">
+  <div class="row" >
+    <div class="col-sm-12" >
+      <div class="table-responsive" align="center" >
+        <h1>Listar usuarios</h1>
+        <table class="table table-striped" >
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Ciudad de Residencia</th>
+            <th>Fecha de Nacimiento</th>
+            <th></th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let usuario of usuarios" >
+            <td>{{usuario.contador}}</td>
+            <td>{{usuario.nombreUsuario}}</td>
+            <td>{{usuario.ciudadResidencia}}</td>
+            <td>{{usuario.fechaNacimiento}}</td>
+            <td><a href="/editarUsuario?idUsuario=<%= usuarios[i].idUsuario%>" data-toggle="tooltip" title="Editar Usuario"><button id="boton" type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></a></td>
+            <td><a href="/Usuario/borrarUsuario?idUsuario=<%= usuarios[i].idUsuario%>" data-toggle="tooltip" title="Eliminar Usuario"><button id="boton" type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-remove"></span></button></a></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <button type="submit" class="btn btn-success">Crear Usuario</button>
-  </form>
+  </div>
 </div>
 
